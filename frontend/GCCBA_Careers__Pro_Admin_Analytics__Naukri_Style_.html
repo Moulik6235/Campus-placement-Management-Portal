@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#b80049",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-dim": "#d9dadb",
+                    "primary-container": "#275df5",
+                    "primary": "#0044d1",
+                    "on-tertiary-fixed-variant": "#343d96",
+                    "surface-bright": "#f8f9fa",
+                    "outline-variant": "#c3c5d8",
+                    "on-primary-fixed": "#001551",
+                    "on-secondary-fixed": "#400014",
+                    "surface-tint": "#074ee7",
+                    "inverse-primary": "#b7c4ff",
+                    "tertiary-fixed-dim": "#bdc2ff",
+                    "outline": "#737687",
+                    "on-secondary-fixed-variant": "#900038",
+                    "primary-fixed": "#dce1ff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "background": "#f8f9fa",
+                    "on-tertiary-container": "#edecff",
+                    "on-background": "#191c1d",
+                    "on-primary-container": "#ebedff",
+                    "surface-variant": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "surface": "#f8f9fa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container": "#edeeef",
+                    "tertiary-container": "#5a63bd",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary-fixed": "#ffd9de",
+                    "inverse-surface": "#2e3132",
+                    "secondary-container": "#e2165f",
+                    "on-primary-fixed-variant": "#0039b4",
+                    "on-tertiary-fixed": "#000767",
+                    "secondary-fixed-dim": "#ffb2be",
+                    "on-secondary-container": "#fffbff",
+                    "tertiary-fixed": "#e0e0ff",
+                    "tertiary": "#414aa3",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .chart-gradient-blue { background: linear-gradient(180deg, #275df5 0%, rgba(39, 93, 245, 0.1) 100%); }
+        .chart-gradient-pink { background: linear-gradient(180deg, #b80049 0%, rgba(184, 0, 73, 0.1) 100%); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-950 flex flex-col p-4 space-y-2 z-40">
+<div class="mb-8 px-2">
+<h1 class="text-lg font-black text-blue-700 font-headline">Admin Panel</h1>
+<p class="text-xs font-medium text-slate-500 font-body">Placement Cell</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Analytics Active -->
+<a class="flex items-center space-x-3 px-3 py-2.5 text-blue-700 dark:text-blue-300 font-bold bg-white dark:bg-slate-800 rounded-lg scale-98 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-sm">Analytics</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm">Students</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="text-sm">Jobs</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm">Applications</span>
+</a>
+</nav>
+<div class="pt-4 mt-auto">
+<button class="w-full bg-secondary text-on-secondary font-semibold py-3 rounded-xl flex items-center justify-center space-x-2 shadow-lg shadow-secondary/20 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span class="text-sm">Post a Job</span>
+</button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen p-8 bg-surface-container-low">
+<!-- Header -->
+<header class="flex justify-between items-end mb-10">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface font-headline">Placement Insights</h2>
+<p class="text-on-surface-variant font-body mt-1">Real-time recruitment data and student progression metrics.</p>
+</div>
+<div class="flex items-center space-x-4">
+<div class="bg-surface-container-lowest px-4 py-2 rounded-xl flex items-center space-x-2 shadow-sm">
+<span class="material-symbols-outlined text-outline" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-semibold">Oct 2023 - May 2024</span>
+</div>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-on-primary-fixed-variant transition-colors flex items-center space-x-2">
+<span class="material-symbols-outlined text-sm" data-icon="file_download">file_download</span>
+<span>Export Report</span>
+</button>
+</div>
+</header>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+</div>
+<span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">+12.5%</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold tracking-wider uppercase mb-1">Total Placements</p>
+<p class="text-2xl font-extrabold text-on-surface font-headline">842</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+</div>
+<span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Active</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold tracking-wider uppercase mb-1">Active Roles</p>
+<p class="text-2xl font-extrabold text-on-surface font-headline">156</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary/10 rounded-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="text-xs font-bold text-pink-600 bg-pink-50 px-2 py-1 rounded-full">High</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold tracking-wider uppercase mb-1">Success Rate</p>
+<p class="text-2xl font-extrabold text-on-surface font-headline">92.4%</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-100 rounded-lg text-orange-600">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+</div>
+<span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-full">Pending</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold tracking-wider uppercase mb-1">Reviews</p>
+<p class="text-2xl font-extrabold text-on-surface font-headline">48</p>
+</div>
+</section>
+<!-- Analytics Bento Grid -->
+<section class="grid grid-cols-12 gap-6 mb-8">
+<!-- Placement Velocity Chart -->
+<div class="col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-transparent">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-lg font-bold font-headline">Placement Velocity</h3>
+<div class="flex space-x-3">
+<div class="flex items-center space-x-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-xs font-medium text-on-surface-variant">2024</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-medium text-on-surface-variant">2023</span>
+</div>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between space-x-2">
+<!-- Faux Chart Bars -->
+<div class="flex-1 group relative">
+<div class="w-full bg-surface-container-low rounded-t-lg h-32 absolute bottom-0"></div>
+<div class="w-full bg-primary rounded-t-lg h-48 absolute bottom-0 transition-all group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 w-full text-center text-[10px] font-bold text-outline uppercase">Jan</span>
+</div>
+<div class="flex-1 group relative">
+<div class="w-full bg-surface-container-low rounded-t-lg h-28 absolute bottom-0"></div>
+<div class="w-full bg-primary rounded-t-lg h-52 absolute bottom-0 transition-all group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 w-full text-center text-[10px] font-bold text-outline uppercase">Feb</span>
+</div>
+<div class="flex-1 group relative">
+<div class="w-full bg-surface-container-low rounded-t-lg h-36 absolute bottom-0"></div>
+<div class="w-full bg-primary rounded-t-lg h-40 absolute bottom-0 transition-all group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 w-full text-center text-[10px] font-bold text-outline uppercase">Mar</span>
+</div>
+<div class="flex-1 group relative">
+<div class="w-full bg-surface-container-low rounded-t-lg h-44 absolute bottom-0"></div>
+<div class="w-full bg-primary rounded-t-lg h-60 absolute bottom-0 transition-all group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 w-full text-center text-[10px] font-bold text-outline uppercase">Apr</span>
+</div>
+<div class="flex-1 group relative">
+<div class="w-full bg-surface-container-low rounded-t-lg h-30 absolute bottom-0"></div>
+<div class="w-full bg-primary rounded-t-lg h-44 absolute bottom-0 transition-all group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 w-full text-center text-[10px] font-bold text-outline uppercase">May</span>
+</div>
+<div class="flex-1 group relative">
+<div class="w-full bg-surface-container-low rounded-t-lg h-40 absolute bottom-0"></div>
+<div class="w-full bg-primary rounded-t-lg h-56 absolute bottom-0 transition-all group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 w-full text-center text-[10px] font-bold text-outline uppercase">Jun</span>
+</div>
+</div>
+</div>
+<!-- Sector Distribution -->
+<div class="col-span-4 bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<h3 class="text-lg font-bold font-headline mb-6">Sector Distribution</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wide">
+<span>Technology</span>
+<span>42%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 42%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wide">
+<span>Finance</span>
+<span>28%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 28%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wide">
+<span>Marketing</span>
+<span>15%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 15%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wide">
+<span>Operations</span>
+<span>15%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-outline" style="width: 15%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-primary/5 rounded-lg">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="lightbulb">lightbulb</span>
+<p class="text-xs text-on-surface-variant font-medium">FinTech hiring is up by 14% this quarter compared to Q3.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Table -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden border border-transparent">
+<div class="px-8 py-6 flex justify-between items-center border-b border-surface-container">
+<h3 class="text-lg font-bold font-headline">Recent Applications</h3>
+<div class="flex space-x-4">
+<button class="text-xs font-bold text-primary flex items-center space-x-1 uppercase tracking-widest">
+<span>View All</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low/50">
+<tr>
+<th class="px-8 py-4 text-[10px] font-black text-outline uppercase tracking-widest">Candidate</th>
+<th class="px-8 py-4 text-[10px] font-black text-outline uppercase tracking-widest">Company &amp; Role</th>
+<th class="px-8 py-4 text-[10px] font-black text-outline uppercase tracking-widest">Applied Date</th>
+<th class="px-8 py-4 text-[10px] font-black text-outline uppercase tracking-widest">Status</th>
+<th class="px-8 py-4 text-[10px] font-black text-outline uppercase tracking-widest text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional headshot of a young male student in a business casual shirt smiling against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkXU9M9_Eix3Hu002uFCTE_hrxk_XeI7tYZ_dWuJp9JQwmrB1UKe0F8af7VYzUl7CZwY8_wO2ppQbk1MqJjqgbe-j7oW-HVJujnTJMb2SHukhrFpgBnh9iFZv5d-I7KrecyWnszvgqYIe6DkpHIvdqGAQgFv8KnNRuqmFuOLLb_0eZjtTniVvIu03hRYIbeHoA1if4Pc4bN0_28Pod7Ab8S-pAuxa5NkYDGOzij9c-9VB6S502Sd8PLf0IMcXviZHHJxgujldYSG9i"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Arnav Sharma</p>
+<p class="text-[11px] text-outline">B.Com | Final Year</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm font-semibold text-on-surface">Deloitte</p>
+<p class="text-[11px] text-outline">Associate Analyst</p>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm text-on-surface-variant font-medium">May 12, 2024</p>
+</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-green-100 text-green-700 uppercase tracking-tighter">Offered</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a confident young professional woman with light makeup and professional attire in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6gvsi9IjFkL1XotLVBJrha_IjcpU8C51Gd911bu0kQymLZjHQnbYD1GB_vdJKI9k1SogNYW8SPqIvuK806XRAMW0os4QyawcxWmnB7o9P1W0mFoVbwKrev5Wby6ssur8T4RYzUPc7z64RtYIUq-lCOWx2YOZltdm4rZP8xSuPIRpChfbtQymHvqnNpAcLKFB2n0jB0T2yUtW09Vud8mFRA3Gh3ytty-l7BpowWZhpJL7O_npJbvsK_RxIozv8kdeABQAioYPALGbd"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Priya Kapur</p>
+<p class="text-[11px] text-outline">BBA | Final Year</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm font-semibold text-on-surface">Zomato</p>
+<p class="text-[11px] text-outline">Marketing Intern</p>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm text-on-surface-variant font-medium">May 10, 2024</p>
+</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 uppercase tracking-tighter">Interviewing</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up of a cheerful young man with short dark hair in a crisp white shirt smiling brightly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaqmRY0-0nwcd9m6LMHXFroyJ5gKGS7PJILmD6pTg62wJI7OmhGORBwlr_JVFxZkpzFNddyhd2uRCzENXJokB-Wj5X189W91WQmbTMY30O054QxK5UWodtTGRnAPYReSlzTUHVilNlZ6QrnBSDHGXccP9kAmx8BsOSKqC_7gQsR8ORHwP6Outvm0ftvQ3FMGBk4XMg36RZ8oittjOMNOV6yr96Lu2O0OX6WIV3IQ0npEymIRMT2UpwExAIAItrh4BDm2Zan3lhRGjY"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Rohan Mehta</p>
+<p class="text-[11px] text-outline">B.Com | Alumni</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm font-semibold text-on-surface">HDFC Bank</p>
+<p class="text-[11px] text-outline">Relationship Manager</p>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm text-on-surface-variant font-medium">May 08, 2024</p>
+</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-red-700 uppercase tracking-tighter">Rejected</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Footer Anchor -->
+<footer class="ml-64 w-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center bg-slate-50 dark:bg-slate-950">
+<div class="mb-4 md:mb-0">
+<span class="text-md font-bold text-slate-400">© 2024 GCCBA Careers. All Rights Reserved.</span>
+</div>
+<div class="flex space-x-8">
+<a class="text-xs font-bold text-slate-500 hover:text-blue-600 underline transition-all uppercase tracking-[2px]" href="#">About Us</a>
+<a class="text-xs font-bold text-slate-500 hover:text-blue-600 underline transition-all uppercase tracking-[2px]" href="#">Privacy Policy</a>
+<a class="text-xs font-bold text-slate-500 hover:text-blue-600 underline transition-all uppercase tracking-[2px]" href="#">Terms of Service</a>
+<a class="text-xs font-bold text-slate-500 hover:text-blue-600 underline transition-all uppercase tracking-[2px]" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>
