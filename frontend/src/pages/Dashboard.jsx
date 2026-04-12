@@ -164,49 +164,46 @@ export default function Dashboard() {
           </div>
         </section>
 
-        <div className="grid grid-cols-12 gap-8">
-          {/* Sidebar Menu */}
-          <aside className="col-span-12 lg:col-span-3 space-y-6">
-            <div className="bg-surface-container-low p-6 rounded-xl">
-              <h3 className="font-headline font-bold text-on-surface mb-6 flex items-center">
-                <span className="material-symbols-outlined mr-2 text-primary">person</span> Student Panel
-              </h3>
-              <div className="space-y-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          {/* Sidebar Links */}
+          <aside className="lg:col-span-3">
+            <div className="sticky top-24">
+              <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-2 lg:space-y-1 no-scrollbar">
                 <button 
                   onClick={() => setActive("jobs")} 
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors flex items-center ${active === 'jobs' ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-surface-container-highest flex items-center'}`}
+                  className={`flex items-center gap-3 px-6 py-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${active === 'jobs' ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' : 'bg-surface-container-low lg:bg-transparent text-on-surface-variant hover:bg-primary/5 hover:text-primary'}`}
                 >
-                  <span className="material-symbols-outlined mr-3 text-sm">work</span> Available Jobs
+                  <span className="material-symbols-outlined text-sm">work</span> Available Jobs
                 </button>
                 <button 
                   onClick={() => setActive("profile")} 
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors flex items-center ${active === 'profile' ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-surface-container-highest'}`}
+                  className={`flex items-center gap-3 px-6 py-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${active === 'profile' ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' : 'bg-surface-container-low lg:bg-transparent text-on-surface-variant hover:bg-primary/5 hover:text-primary'}`}
                 >
-                  <span className="material-symbols-outlined mr-3 text-sm">description</span> Profile Summary
+                  <span className="material-symbols-outlined text-sm">description</span> Profile Summary
                 </button>
                 <button 
                   onClick={() => setActive("education")} 
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors flex items-center ${active === 'education' ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-surface-container-highest'}`}
+                  className={`flex items-center gap-3 px-6 py-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${active === 'education' ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' : 'bg-surface-container-low lg:bg-transparent text-on-surface-variant hover:bg-primary/5 hover:text-primary'}`}
                 >
-                  <span className="material-symbols-outlined mr-3 text-sm">school</span> Education
+                  <span className="material-symbols-outlined text-sm">school</span> Education
                 </button>
                 <button 
                   onClick={() => setActive("skills")} 
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors flex items-center ${active === 'skills' ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-surface-container-highest'}`}
+                  className={`flex items-center gap-3 px-6 py-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${active === 'skills' ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' : 'bg-surface-container-low lg:bg-transparent text-on-surface-variant hover:bg-primary/5 hover:text-primary'}`}
                 >
-                  <span className="material-symbols-outlined mr-3 text-sm">psychology</span> Skills
+                  <span className="material-symbols-outlined text-sm">psychology</span> Skills
                 </button>
                 <button 
                   onClick={() => setActive("projects")} 
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors flex items-center ${active === 'projects' ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-surface-container-highest'}`}
+                  className={`flex items-center gap-3 px-6 py-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${active === 'projects' ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' : 'bg-surface-container-low lg:bg-transparent text-on-surface-variant hover:bg-primary/5 hover:text-primary'}`}
                 >
-                  <span className="material-symbols-outlined mr-3 text-sm">rocket_launch</span> Projects
+                  <span className="material-symbols-outlined text-sm">rocket_launch</span> Projects
                 </button>
                 <button 
                   onClick={() => setActive("applications")} 
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors flex items-center ${active === 'applications' ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-surface-container-highest'}`}
+                  className={`flex items-center gap-3 px-6 py-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${active === 'applications' ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' : 'bg-surface-container-low lg:bg-transparent text-on-surface-variant hover:bg-primary/5 hover:text-primary'}`}
                 >
-                  <span className="material-symbols-outlined mr-3 text-sm">fact_check</span> Applications
+                  <span className="material-symbols-outlined text-sm">fact_check</span> Applications
                 </button>
               </div>
             </div>

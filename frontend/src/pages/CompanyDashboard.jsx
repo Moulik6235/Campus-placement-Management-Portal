@@ -83,7 +83,7 @@ const CompanyDashboard = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-outline-variant/30 mb-8 sticky top-[64px] bg-surface z-10 py-1">
+        <div className="flex border-b border-outline-variant/30 mb-8 sticky top-[64px] bg-surface z-10 py-1 overflow-x-auto no-scrollbar">
           {[
             { id: "overview", label: "Overview", icon: "dashboard" },
             { id: "jobs", label: "My Jobs", icon: "work" },

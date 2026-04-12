@@ -9,6 +9,7 @@ const Navbar = () => {
   const userName = localStorage.getItem("name");
   const initial = userName ? userName[0].toUpperCase() : (role === "admin" ? "A" : "S");
   const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   // Close dropdown when clicking outside
@@ -85,6 +86,16 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
+          {/* MOBILE MENU TOGGLE */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-on-surface-variant hover:text-primary p-2 transition-colors"
+          >
+            <span className="material-symbols-outlined text-[28px]">
+              {mobileMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
+
           {isLoggedIn ? (
             <div className="flex items-center gap-4">
               <button className="hidden sm:flex text-on-surface-variant hover:text-primary-hover hover:bg-primary/5 w-10 h-10 rounded-full items-center justify-center transition-colors">
@@ -196,6 +207,46 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
+      {/* MOBILE MENU DRAWER */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-[100%] left-0 right-0 bg-surface border-b border-outline-variant/20 shadow-xl animate-in slide-in-from-top duration-300 z-40">
+          <div className="flex flex-col p-6 gap-6">
+            <Link 
+              to="/" 
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-bold flex items-center gap-3 ${location.pathname === '/' ? 'text-primary' : 'text-on-surface'}`}
+            >
+              <span className="material-symbols-outlined">home</span> Home
+            </Link>
+            {role !== "company" && (
+              <Link 
+                to="/jobs" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-lg font-bold flex items-center gap-3 ${location.pathname === '/jobs' ? 'text-primary' : 'text-on-surface'}`}
+              >
+                <span className="material-symbols-outlined">work</span> Jobs
+              </Link>
+            )}
+            {isLoggedIn ? (
+              <>
+                <Link 
+                  to={role === "admin" ? "/admin/dashboard" : (role === "company" ? "/company/dashboard" : "/dashboard")} 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-lg font-bold flex items-center gap-3 text-on-surface"
+                >
+                  <span className="material-symbols-outlined">dashboard</span> Dashboard
+                </Link>
+              </>
+            ) : (
+              <div className="flex flex-col gap-4 pt-4 border-t border-outline-variant/10">
+                <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-on-surface border border-outline-variant/30 rounded-xl">Log In</Link>
+                <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-white bg-primary rounded-xl">Register</Link>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

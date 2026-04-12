@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { sendEmail, approvalTemplate } = require("../services/emailService");
 
-// 🔐 Generate Token
+// Generate Token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
@@ -79,7 +79,7 @@ exports.approveUser = async (req, res) => {
   }
 };
 
-// ❌ Reject user
+// Reject user
 exports.rejectUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -97,7 +97,7 @@ exports.rejectUser = async (req, res) => {
   }
 };
 
-// ✅ GET ALL STUDENTS
+// GET ALL STUDENTS
 exports.getAllStudents = async (req, res) => {
   try {
     const students = await User.find({ role: "student" }).sort({ createdAt: -1 });
@@ -107,7 +107,7 @@ exports.getAllStudents = async (req, res) => {
   }
 };
 
-// ✅ GET ALL COMPANIES
+//  GET ALL COMPANIES
 exports.getAllCompanies = async (req, res) => {
   try {
     const companies = await User.find({ role: "company" }).sort({ createdAt: -1 });
@@ -120,7 +120,7 @@ exports.getAllCompanies = async (req, res) => {
 const Application = require("../models/Application");
 const Job = require("../models/Job");
 
-// 📊 ADMIN ANALYTICS
+// ADMIN ANALYTICS
 exports.getAnalytics = async (req, res) => {
   try {
     const User = require("../models/User");

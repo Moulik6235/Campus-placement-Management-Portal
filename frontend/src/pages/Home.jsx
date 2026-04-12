@@ -97,7 +97,7 @@ const Home = () => {
                 </p>
 
                 {/* Search Bar (Hero Component) */}
-                <div className="bg-surface-container-lowest rounded-xl sunken-shadow p-2 flex flex-col md:flex-row items-center gap-2 max-w-4xl mx-auto">
+                <div className="bg-surface-container-lowest rounded-2xl md:rounded-xl sunken-shadow p-2 flex flex-col md:flex-row items-center gap-2 max-w-4xl mx-auto">
                   <div className="flex-1 flex items-center px-4 py-3 w-full">
                     <span className="material-symbols-outlined text-outline mr-3">work</span>
                     <JobSearchAutocomplete
@@ -107,7 +107,7 @@ const Home = () => {
                     />
                   </div>
                   <div className="hidden md:block w-px h-10 bg-outline-variant/10"></div>
-                  <div className="flex-1 flex items-center px-4 py-3 w-full border border-outline-variant/10 rounded-lg bg-surface-container">
+                  <div className="flex-1 flex items-center px-4 py-3 w-full border-y md:border-y-0 border-outline-variant/10 bg-surface-container-low md:bg-transparent">
                     <span className="material-symbols-outlined text-outline mr-3">location_on</span>
                     <input className="w-full bg-transparent border-none focus:outline-none text-on-surface placeholder:text-outline-variant" placeholder="Location" type="text" />
                   </div>
@@ -123,7 +123,7 @@ const Home = () => {
                   </div>
                   <Link
                     to='/jobs'
-                    className="w-full md:w-auto bg-primary text-white px-10 py-4 rounded-lg font-bold hover:bg-primary-hover transition-all active:scale-95 shadow-lg flex items-center justify-center gap-2"
+                    className="w-full md:w-auto bg-primary text-white px-10 py-4 rounded-xl md:rounded-lg font-bold hover:bg-primary-hover transition-all active:scale-95 shadow-lg flex items-center justify-center gap-2"
                   >
                     Search Jobs
                   </Link>

@@ -110,8 +110,8 @@ export default function JobDetails() {
           {/* Job Header Card */}
           <section className="bg-surface-container-lowest rounded-2xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-outline-variant/10 relative overflow-hidden group">
             <div className="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div className="flex items-start justify-between">
-              <div className="flex items-start gap-6">
+            <div className="flex flex-col md:flex-row items-start justify-between gap-6">
+              <div className="flex flex-col md:flex-row items-start gap-6">
                 <div className="w-20 h-20 rounded-xl overflow-hidden bg-surface-container/30 flex items-center justify-center shrink-0 border border-outline-variant/20">
                   {job.logo ? (
                     <img className="w-12 h-12 object-contain" src={job.logo} alt={job.company} />
@@ -120,7 +120,7 @@ export default function JobDetails() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <h1 className="text-3xl font-extrabold font-headline text-on-surface tracking-tight">{job.title}</h1>
+                  <h1 className="text-2xl md:text-3xl font-extrabold font-headline text-on-surface tracking-tight">{job.title}</h1>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-on-surface-variant font-medium">
                     <span className="flex items-center gap-1"><span className="material-symbols-outlined text-primary text-[18px]">business</span> {job.company}</span>
                     <span className="flex items-center gap-1"><span className="material-symbols-outlined text-primary text-[18px]">location_on</span> {job.location || "Remote"}</span>
@@ -137,7 +137,7 @@ export default function JobDetails() {
                   </div>
                 </div>
               </div>
-              <button className="text-outline hover:text-primary hover:bg-primary-container/10 p-2 rounded-full transition-colors">
+              <button className="self-end md:self-auto text-outline hover:text-primary hover:bg-primary-container/10 p-2 rounded-full transition-colors">
                 <span className="material-symbols-outlined text-2xl">bookmark</span>
               </button>
             </div>

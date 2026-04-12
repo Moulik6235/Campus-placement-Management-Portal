@@ -27,7 +27,7 @@ exports.createJob = async (req, res) => {
       jobType,
       experienceRequired,
       skillsRequired: skillsArray,
-      postedBy: req.user._id // ✅ Connect job to the company user
+      postedBy: req.user._id //Connect job to the company user
     });
 
     // Notify all approved students

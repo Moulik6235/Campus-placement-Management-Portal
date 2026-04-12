@@ -5,7 +5,7 @@ const multer = require("multer");
 const {
   updateProfile,
   uploadResume,
-  getProfile,   // ✅ ADD THIS
+  getProfile,   
 } = require("../controllers/userController");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -19,8 +19,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// ✅ Routes
-router.get("/profile", protect, getProfile);   // ✅ ADD THIS
+
+router.get("/profile", protect, getProfile);  
 router.put("/profile", protect, updateProfile);
 router.post("/upload-resume", protect, upload.single("resume"), uploadResume);
 

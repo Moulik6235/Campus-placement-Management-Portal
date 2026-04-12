@@ -1,7 +1,7 @@
 const Application = require("../models/Application");
 const Job = require("../models/Job");
 
-// ✅ APPLY JOB
+// APPLY JOB
 exports.applyJob = async (req, res) => {
   try {
     const { jobId } = req.body;
@@ -10,7 +10,7 @@ exports.applyJob = async (req, res) => {
       return res.status(400).json({ message: "Job ID required" });
     }
 
-    // ❌ Prevent duplicate apply
+    // Prevent duplicate apply
     const alreadyApplied = await Application.findOne({
       user: req.user._id,
       job: jobId,
@@ -36,7 +36,7 @@ exports.applyJob = async (req, res) => {
   }
 };
 
-// ✅ GET MY APPLICATIONS
+// GET MY APPLICATIONS
 exports.getMyApplications = async (req, res) => {
   try {
     const apps = await Application.find({
@@ -50,7 +50,7 @@ exports.getMyApplications = async (req, res) => {
   }
 };
 
-// ✅ ADMIN: GET ALL
+// ADMIN: GET ALL
 exports.getApplications = async (req, res) => {
   const apps = await Application.find()
     .populate("user", "name email skills education about rollNo")
@@ -59,7 +59,7 @@ exports.getApplications = async (req, res) => {
   res.json(apps);
 };
 
-// ✅ UPDATE STATUS
+// UPDATE STATUS
 exports.updateStatus = async (req, res) => {
   try {
     const { status } = req.body;
@@ -76,7 +76,7 @@ exports.updateStatus = async (req, res) => {
   }
 };
 
-// ✅ COMPANY: GET APPLICATIONS FOR MY JOBS
+// COMPANY: GET APPLICATIONS FOR MY JOBS
 exports.getCompanyApplications = async (req, res) => {
     try {
       // 1. Find all jobs posted by this company

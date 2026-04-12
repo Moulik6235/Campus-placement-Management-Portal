@@ -7,6 +7,7 @@ import API from "../services/api";
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [tab, setTab] = useState("analytics");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const [students, setStudents] = useState([]);
   const [companies, setCompanies] = useState([]);
@@ -200,9 +201,17 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="bg-surface text-on-surface min-h-screen font-body flex">
+    <div className="bg-surface text-on-surface min-h-screen font-body flex relative overflow-hidden">
+      {/* MOBILE HEADER */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 bg-surface-container-lowest border-b border-outline-variant/20 px-6 py-4 flex items-center justify-between z-50">
+        <h1 className="text-xl font-black text-primary font-headline">Admin Panel</h1>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 text-on-surface-variant hover:text-primary">
+          <span className="material-symbols-outlined text-[28px]">{mobileOpen ? 'close' : 'menu'}</span>
+        </button>
+      </div>
+
       {/* SideNavBar */}
-      <aside className="w-64 fixed left-0 top-0 h-screen bg-surface-container-lowest flex flex-col p-4 space-y-2 z-40 border-r border-outline-variant/20">
+      <aside className={`w-64 fixed lg:relative left-0 top-0 h-screen bg-surface-container-lowest flex flex-col p-4 space-y-2 z-40 border-r border-outline-variant/20 transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="mb-8 px-2 mt-4">
           <h1 className="text-xl font-black text-primary font-headline">Admin Panel</h1>
           <p className="text-xs font-medium text-on-surface-variant font-body">Placement Cell</p>
@@ -215,7 +224,7 @@ const AdminDashboard = () => {
             { id: 'applications', icon: 'description', label: 'Applications' }].map((t) => (
             <button
               key={t.id}
-              onClick={() => setTab(t.id)}
+              onClick={() => { setTab(t.id); setMobileOpen(false); }}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all ${
                 tab === t.id
                   ? "bg-primary text-white shadow-md shadow-primary/20 scale-[0.98]"
@@ -243,8 +252,16 @@ const AdminDashboard = () => {
         </div>
       </aside>
 
+      {/* OVERLAY FOR MOBILE */}
+      {mobileOpen && (
+        <div 
+          onClick={() => setMobileOpen(false)}
+          className="lg:hidden fixed inset-0 bg-on-surface/50 backdrop-blur-sm z-30 animate-in fade-in duration-300"
+        ></div>
+      )}
+
       {/* Main Canvas */}
-      <main className="ml-64 flex-1 min-h-screen p-8 bg-surface-container-low/30">
+      <main className="flex-1 min-h-screen p-6 lg:p-8 bg-surface-container-low/30 mt-[72px] lg:mt-0 transition-all">
         
         {/* HEADER */}
         <header className="flex justify-between items-end mb-10">
