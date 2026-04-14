@@ -14,6 +14,9 @@ import CompanyDashboard from "./pages/CompanyDashboard";
 import PostJob from "./pages/PostJob";
 import Help from "./pages/Help";
 
+// Global Features
+import AIChatbot from "./components/features/ai/AIChatbot";
+
 // Protected Routes
 import ProtectedRoute, { AdminRoute, StudentRoute, CompanyRoute } from "./components/features/auth/ProtectedRoute";
 
@@ -101,6 +104,7 @@ function App() {
         />
 
       </Routes>
+      <AIChatbot />
     </BrowserRouter>
   );
 }
