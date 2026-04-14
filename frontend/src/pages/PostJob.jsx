@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import API from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 const PostJob = () => {
   const { id } = useParams(); // For Edit Mode
@@ -243,6 +244,7 @@ const PostJob = () => {
 
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

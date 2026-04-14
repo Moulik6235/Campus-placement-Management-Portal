@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import API from "../services/api";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 const CompanyDashboard = () => {
   const [jobs, setJobs] = useState([]);
@@ -341,6 +342,7 @@ const CompanyDashboard = () => {
         </div>
 
       </main>
+      <Footer />
     </div>
   );
 };

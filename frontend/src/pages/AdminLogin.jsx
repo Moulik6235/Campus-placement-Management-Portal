@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../services/api";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -128,6 +129,7 @@ const AdminLogin = () => {
 
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

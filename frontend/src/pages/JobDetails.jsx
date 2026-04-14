@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import API from "../services/api";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 export default function JobDetails() {
   const { id } = useParams();
@@ -377,6 +378,7 @@ export default function JobDetails() {
           </div>
         </aside>
       </main>
+      <Footer />
     </div>
   );
 }

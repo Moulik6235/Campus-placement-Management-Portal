@@ -2,6 +2,7 @@ import { useState } from "react";
 import API from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -110,13 +111,14 @@ export default function Login() {
 
           <p className="text-center mt-8 text-sm text-on-surface-variant font-medium">
             Don't have an account?{" "}
-            <Link to="/register" className="text-primary hover:text-primary-fixed hover:underline font-bold transition-colors">
+            <Link to="/register" className="text-primary hover:text-primary-hover hover:underline font-bold transition-colors">
               Register now
             </Link>
           </p>
 
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

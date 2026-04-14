@@ -2,6 +2,7 @@ import { useState } from "react";
 import API from "../services/api";
 import { jsPDF } from "jspdf";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 export default function Profile() {
   // PROFILE
@@ -404,6 +405,7 @@ export default function Profile() {
         </div>
         )}
       </main>
+      <Footer />
     </div>
   );
 }

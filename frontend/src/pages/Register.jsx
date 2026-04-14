@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../services/api";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -248,7 +249,7 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading || (form.password.length > 0 && !isPasswordValid)}
-              className="w-full mt-8 bg-secondary hover:bg-secondary-container hover:text-on-secondary-container text-on-secondary py-3.5 rounded-xl font-bold shadow-md shadow-secondary/20 transition-all active:scale-[0.98] disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed flex justify-center items-center gap-2 group"
+              className="w-full mt-8 bg-secondary hover:bg-secondary-hover text-on-secondary py-3.5 rounded-xl font-bold shadow-md shadow-secondary/20 transition-all active:scale-[0.98] disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed flex justify-center items-center gap-2 group"
             >
               {loading ? "Creating Account..." : "Register Now"}
               {!loading && <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>}
@@ -297,6 +298,7 @@ const Register = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

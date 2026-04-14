@@ -170,13 +170,14 @@ const Navbar = () => {
 
                     <div className="h-px bg-outline-variant/15 my-2"></div>
 
-                    <div
+                    <Link
+                      to="/"
                       onClick={handleLogout}
-                      className="flex items-center gap-3 cursor-pointer hover:bg-error-container/50 text-error px-4 py-2.5 rounded-xl transition-colors font-bold text-sm"
+                      className="flex items-center gap-3 cursor-pointer hover:bg-error-container/50 text-error px-4 py-2.5 rounded-xl transition-colors font-bold text-sm no-underline"
                     >
                       <span className="material-symbols-outlined text-[20px]">logout</span>
                       Log out
-                    </div>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -199,7 +200,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/register"
-                className="bg-primary text-on-primary rounded-xl px-6 py-2.5 font-bold hover:bg-primary-fixed hover:text-on-primary-fixed transition-all active:scale-95 shadow-sm shadow-primary/20 cursor-pointer border border-primary/10 no-underline"
+                className="bg-primary text-on-primary rounded-xl px-6 py-2.5 font-bold hover:bg-primary-hover transition-all active:scale-95 shadow-sm shadow-primary/20 cursor-pointer border border-primary/10 no-underline"
               >
                 Register
               </Link>
@@ -241,7 +242,7 @@ const Navbar = () => {
             ) : (
               <div className="flex flex-col gap-4 pt-4 border-t border-outline-variant/10">
                 <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-on-surface border border-outline-variant/30 rounded-xl">Log In</Link>
-                <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-white bg-primary rounded-xl">Register</Link>
+                <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-white bg-primary rounded-xl hover:bg-primary-hover transition-colors">Register</Link>
               </div>
             )}
           </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import API from "../services/api";
 import { useLocation, Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import JobSearchAutocomplete from "../components/features/jobs/JobSearchAutocomplete";
 
 export default function Dashboard() {
@@ -472,6 +473,7 @@ export default function Dashboard() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

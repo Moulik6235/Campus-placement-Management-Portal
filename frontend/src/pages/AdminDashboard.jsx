@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import API from "../services/api";
+import Footer from "../components/layout/Footer";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -241,14 +242,21 @@ const AdminDashboard = () => {
             <span className="material-symbols-outlined text-sm">add</span>
             <span className="text-sm">Post a Job</span>
           </button>
-          <button onClick={() => navigate("/")} className="w-full bg-surface-container-high text-on-surface-variant font-bold py-3 rounded-xl flex items-center justify-center space-x-2 hover:bg-primary-hover hover:text-white transition-all active:scale-95">
+          <Link 
+            to="/" 
+            className="w-full bg-surface-container-high text-on-surface-variant font-bold py-3 rounded-xl flex items-center justify-center space-x-2 hover:bg-primary-hover hover:text-white transition-all active:scale-95 no-underline"
+          >
             <span className="material-symbols-outlined text-sm">home</span>
             <span className="text-sm">Go to Home</span>
-          </button>
-          <button onClick={logout} className="w-full bg-surface-container-high text-on-surface-variant font-bold py-3 rounded-xl flex items-center justify-center space-x-2 hover:bg-error hover:text-white transition-colors active:scale-95">
+          </Link>
+          <Link 
+            to="/admin" 
+            onClick={logout} 
+            className="w-full bg-surface-container-high text-on-surface-variant font-bold py-3 rounded-xl flex items-center justify-center space-x-2 hover:bg-error hover:text-white transition-colors active:scale-95 no-underline"
+          >
             <span className="material-symbols-outlined text-sm">logout</span>
             <span className="text-sm">Logout</span>
-          </button>
+          </Link>
         </div>
       </aside>
 
@@ -659,6 +667,7 @@ const AdminDashboard = () => {
             </div>
           </div>
         )}
+        <Footer />
       </main>
     </div>
   );

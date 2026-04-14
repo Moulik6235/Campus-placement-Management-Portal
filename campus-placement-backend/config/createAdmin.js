@@ -17,9 +17,9 @@ const createAdmin = async () => {
         status: "approved",
       });
 
-      console.log("✅ Admin created");
+      console.log("Admin created");
     } else {
-      console.log("⚡ Admin already exists");
+      console.log("Admin already exists");
     }
   } catch (error) {
     console.log(error.message);

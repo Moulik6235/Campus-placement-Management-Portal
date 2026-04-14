@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import API from "../services/api";
 
 import JobSearchAutocomplete from "../components/features/jobs/JobSearchAutocomplete";
@@ -170,6 +171,7 @@ const Jobs = () => {
 
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
