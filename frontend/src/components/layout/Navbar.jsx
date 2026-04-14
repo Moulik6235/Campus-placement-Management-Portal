@@ -183,7 +183,7 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2">
               <Link
                 to="/admin"
                 className="text-on-surface-variant font-medium hover:text-primary hover:bg-primary/5 transition-all active:scale-95 px-3 py-2 rounded-xl cursor-pointer flex items-center gap-1.5 text-sm mr-2 border border-outline-variant/30"
@@ -242,7 +242,10 @@ const Navbar = () => {
             ) : (
               <div className="flex flex-col gap-4 pt-4 border-t border-outline-variant/10">
                 <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-on-surface border border-outline-variant/30 rounded-xl">Log In</Link>
-                <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-white bg-primary rounded-xl hover:bg-primary-hover transition-colors">Register</Link>
+                <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center font-bold text-white bg-primary rounded-xl hover:bg-primary-hover transition-colors shadow-sm">Register</Link>
+                <Link to="/admin" onClick={() => setMobileMenuOpen(false)} className="w-full py-3 text-center font-bold text-on-surface-variant flex items-center justify-center gap-2">
+                  <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span> Admin Login
+                </Link>
               </div>
             )}
           </div>

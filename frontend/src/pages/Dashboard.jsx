@@ -141,18 +141,18 @@ export default function Dashboard() {
       <main className="max-w-screen-2xl mx-auto w-full px-6 py-8 flex-grow">
         {/* Hero Search Section */}
         <section className="mb-10">
-          <div className="bg-surface-container-lowest p-2 rounded-xl shadow-[0_24px_32px_-12px_rgba(25,28,29,0.04)] flex flex-col md:flex-row items-center">
-            <div className="flex-1 flex items-center px-6 py-3 space-x-3 ghost-border border-r border-outline-variant/15 md:border-r-0 md:border-b-0 border-b">
+          <div className="bg-surface-container-lowest p-2 rounded-xl shadow-[0_24px_32px_-12px_rgba(25,28,29,0.04)] flex flex-col md:flex-row items-stretch md:items-center">
+            <div className="flex-1 flex items-center px-4 md:px-6 py-3 space-x-3 ghost-border border-b md:border-b-0 md:border-r border-outline-variant/15 w-full md:w-auto">
               <span className="material-symbols-outlined text-outline">search</span>
               <JobSearchAutocomplete placeholder="Enter skills / designations" />
             </div>
             <div className="hidden md:block w-px h-10 bg-outline-variant/10"></div>
-            <div className="flex-1 flex items-center px-6 py-3 space-x-3 ghost-border border-r border-outline-variant/15 md:border-r-0 md:border-b-0 border-b">
+            <div className="flex-1 flex items-center px-4 md:px-6 py-3 space-x-3 ghost-border border-b md:border-b-0 md:border-r border-outline-variant/15 w-full md:w-auto">
               <span className="material-symbols-outlined text-outline">location_on</span>
               <input className="w-full border-none focus:outline-none bg-transparent text-on-surface font-body" placeholder="Enter location" type="text" />
             </div>
             <div className="hidden md:block w-px h-10 bg-outline-variant/10"></div>
-            <div className="flex-1 flex items-center px-6 py-3 space-x-3">
+            <div className="flex-1 flex items-center px-4 md:px-6 py-3 space-x-3 w-full md:w-auto">
               <span className="material-symbols-outlined text-outline">work_history</span>
               <select className="w-full border-none focus:outline-none bg-transparent text-on-surface font-body appearance-none">
                 <option>Select experience</option>
@@ -161,13 +161,13 @@ export default function Dashboard() {
                 <option>3+ Years</option>
               </select>
             </div>
-            <button className="m-2 bg-primary text-white font-bold px-10 py-4 rounded-lg hover:opacity-90 transition-all w-full md:w-auto">Search</button>
+            <button className="m-2 bg-primary text-white font-bold px-10 py-4 rounded-lg hover:opacity-90 transition-all w-[calc(100%-16px)] md:w-auto">Search</button>
           </div>
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Sidebar Links */}
-          <aside className="lg:col-span-3">
+          <aside className="lg:col-span-3 min-w-0">
             <div className="sticky top-24">
               <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-2 lg:space-y-1 no-scrollbar">
                 <button 
@@ -231,7 +231,7 @@ export default function Dashboard() {
           </aside>
 
           {/* Main Content */}
-          <div className="col-span-12 lg:col-span-9 space-y-6">
+          <div className="lg:col-span-9 space-y-6 min-w-0">
             
             {active === "jobs" && (
               <>
@@ -458,11 +458,11 @@ export default function Dashboard() {
 
                   {/* Save Button for all forms */}
                   {editing && (
-                    <div className="mt-8 pt-6 border-t border-outline-variant/20 flex gap-4">
-                      <button onClick={saveData} className="px-8 py-3 bg-primary text-white font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all shadow-md">
+                    <div className="mt-8 pt-6 border-t border-outline-variant/20 flex flex-col md:flex-row gap-4">
+                      <button onClick={saveData} className="w-full md:w-auto px-8 py-3 bg-primary text-white font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all shadow-md">
                         Save Changes
                       </button>
-                      <button onClick={() => { setEditing(false); setSkillInput(""); fetchUser(); }} className="px-8 py-3 bg-surface-container text-on-surface font-bold rounded-lg hover:bg-outline-variant transition-all">
+                      <button onClick={() => { setEditing(false); setSkillInput(""); fetchUser(); }} className="w-full md:w-auto px-8 py-3 bg-surface-container text-on-surface font-bold rounded-lg hover:bg-outline-variant transition-all">
                         Cancel
                       </button>
                     </div>

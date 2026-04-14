@@ -212,8 +212,8 @@ const AdminDashboard = () => {
       </div>
 
       {/* SideNavBar */}
-      <aside className={`w-64 fixed lg:relative left-0 top-0 h-screen bg-surface-container-lowest flex flex-col p-4 space-y-2 z-40 border-r border-outline-variant/20 transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
-        <div className="mb-8 px-2 mt-4">
+      <aside className={`w-64 fixed lg:relative left-0 top-0 h-screen bg-surface-container-lowest flex flex-col pt-24 pb-4 px-4 lg:pt-4 space-y-2 z-40 border-r border-outline-variant/20 transition-transform duration-300 shadow-2xl lg:shadow-none ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+        <div className="mb-8 px-2 mt-2 hidden lg:block">
           <h1 className="text-xl font-black text-primary font-headline">Admin Panel</h1>
           <p className="text-xs font-medium text-on-surface-variant font-body">Placement Cell</p>
         </div>
@@ -660,7 +660,7 @@ const AdminDashboard = () => {
                     </tr>
                   ))}
                   {applications.length === 0 && (
-                    <tr><td colSpan="4" className="px-6 py-8 text-center text-on-surface-variant">No applications found.</td></tr>
+                    <tr><td colSpan="6" className="px-6 py-8 text-center text-on-surface-variant font-medium">No applications found.</td></tr>
                   )}
                 </tbody>
               </table>

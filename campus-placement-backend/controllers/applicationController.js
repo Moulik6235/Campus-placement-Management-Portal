@@ -1,5 +1,6 @@
 const Application = require("../models/Application");
 const Job = require("../models/Job");
+const { sendEmail, applicationReceivedTemplate, shortlistTemplate, rejectionTemplate } = require("../services/emailService");
 
 // APPLY JOB
 exports.applyJob = async (req, res) => {
@@ -27,6 +28,18 @@ exports.applyJob = async (req, res) => {
       job: jobId,
       resume: req.file ? req.file.path.replace(/\\/g, "/") : "",
     });
+
+    try {
+      const jobDetails = await Job.findById(jobId);
+      const emailHtml = applicationReceivedTemplate(req.user.name, jobDetails.title, jobDetails.company);
+      await sendEmail(
+        req.user.email,
+        `Application Received - ${jobDetails.title}`,
+        emailHtml
+      );
+    } catch (emailErr) {
+      console.log("Email not sent:", emailErr);
+    }
 
     res.status(201).json(application);
 
@@ -64,11 +77,33 @@ exports.updateStatus = async (req, res) => {
   try {
     const { status } = req.body;
 
-    const app = await Application.findByIdAndUpdate(
-      req.params.id,
-      { status },
-      { new: true }
-    );
+    const app = await Application.findById(req.params.id)
+      .populate("user", "name email")
+      .populate("job", "title company");
+
+    if (!app) return res.status(404).json({ message: "Application not found" });
+
+    app.status = status;
+    await app.save();
+
+    let emailSubject = "";
+    let emailHtml = "";
+
+    if (status === "Shortlisted") {
+      emailSubject = `Congratulations! You are Shortlisted for ${app.job.title}`;
+      emailHtml = shortlistTemplate(app.user.name, app.job.title, app.job.company);
+    } else if (status === "Rejected") {
+      emailSubject = `Application Status Update - ${app.job.title}`;
+      emailHtml = rejectionTemplate(app.user.name, app.job.title, app.job.company);
+    }
+
+    if (emailSubject && emailHtml) {
+      try {
+        await sendEmail(app.user.email, emailSubject, emailHtml);
+      } catch (err) {
+        console.log("Status update email error: ", err);
+      }
+    }
 
     res.json(app);
   } catch (err) {

@@ -71,9 +71,49 @@ const newJobTemplate = (jobTitle, company, location) => `
 </div>
 `;
 
+const applicationReceivedTemplate = (name, jobTitle, company) => `
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="color: #dd1477;">Application Received</h2>
+  </div>
+  <p>Dear <strong>${name}</strong>,</p>
+  <p>You have successfully applied for the <strong>${jobTitle}</strong> position at <strong>${company}</strong>.</p>
+  <p>We will notify you of any status updates regarding your application.</p>
+  <p>Best regards,<br/>GCCBA Placement Cell</p>
+</div>
+`;
+
+const shortlistTemplate = (name, jobTitle, company) => `
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="color: #28a745;">Congratulations! You are Shortlisted</h2>
+  </div>
+  <p>Dear <strong>${name}</strong>,</p>
+  <p>We are pleased to inform you that your application for the <strong>${jobTitle}</strong> position at <strong>${company}</strong> has been <strong>shortlisted</strong>!</p>
+  <p>You will shortly be called for an interview round. Please keep an eye on your email and portal messages for further instructions and details regarding the interview schedule.</p>
+  <p>Best regards,<br/>GCCBA Placement Cell</p>
+</div>
+`;
+
+const rejectionTemplate = (name, jobTitle, company) => `
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="color: #6c757d;">Application Update</h2>
+  </div>
+  <p>Dear <strong>${name}</strong>,</p>
+  <p>Thank you for your interest and applying for the <strong>${jobTitle}</strong> position at <strong>${company}</strong>.</p>
+  <p>We regret to inform you that your profile was not selected to move forward for this particular role at this time.</p>
+  <p>We encourage you to continue applying for other exciting opportunities on our portal.</p>
+  <p>Best regards,<br/>GCCBA Placement Cell</p>
+</div>
+`;
+
 module.exports = {
   sendEmail,
   registrationTemplate,
   approvalTemplate,
   newJobTemplate,
+  applicationReceivedTemplate,
+  shortlistTemplate,
+  rejectionTemplate,
 };

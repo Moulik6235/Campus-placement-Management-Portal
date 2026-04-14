@@ -30,7 +30,7 @@ app.use("/api/jobs", require("./routes/jobRoutes"));
 app.use("/api/applications", require("./routes/applicationRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/ai", require("./routes/aiRoutes"));
-app.use("/api/users", require("./routes/userRoutes")); // ✅ important
+app.use("/api/users", require("./routes/userRoutes"));
 
 // Test route
 app.get("/", (req, res) => {

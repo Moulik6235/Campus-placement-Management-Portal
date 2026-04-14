@@ -208,9 +208,8 @@ const Home = () => {
                 <img alt="AU BANK" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/au_bank.png" />
                 <img alt="Wipro" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/wipro.png" />
               </div>
-
             </div>
-          </div>
+            </div>
           </section>
         )}
 
@@ -328,8 +327,6 @@ const Home = () => {
           </div>
           </section>
         )}
-
-       
 
         {/* Newsletter / CTA */}
         {userRole !== 'company' && (
