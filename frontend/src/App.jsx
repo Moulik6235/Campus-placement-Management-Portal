@@ -12,6 +12,7 @@ import JobDetails from "./pages/JobDetails";
 import Jobs from "./pages/Jobs";
 import CompanyDashboard from "./pages/CompanyDashboard";
 import PostJob from "./pages/PostJob";
+import Help from "./pages/Help";
 
 // Protected Routes
 import ProtectedRoute, { AdminRoute, StudentRoute, CompanyRoute } from "./components/features/auth/ProtectedRoute";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/help" element={<Help />} />
 
         {/* IMPORTANT: Match Navbar path */}
         <Route path="/admin" element={<AdminLogin />} />

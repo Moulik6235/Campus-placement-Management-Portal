@@ -73,6 +73,7 @@ const Navbar = () => {
           <div className="hidden md:flex gap-8 items-center mt-1">
             <NavLink path="/" label="Home" />
             {role !== "company" && <NavLink path="/jobs" label="Jobs" />}
+            <NavLink path="/help" label="Help & Support" />
             {isLoggedIn && role === "student" && (
               <Link to="/dashboard" className="text-on-surface-variant hover:text-primary transition-colors font-bold text-sm tracking-wide uppercase">Dashboard</Link>
             )}
@@ -229,6 +230,13 @@ const Navbar = () => {
                 <span className="material-symbols-outlined">work</span> Jobs
               </Link>
             )}
+            <Link 
+              to="/help" 
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-bold flex items-center gap-3 ${location.pathname === '/help' ? 'text-primary' : 'text-on-surface'}`}
+            >
+              <span className="material-symbols-outlined">help</span> Help Support
+            </Link>
             {isLoggedIn ? (
               <>
                 <Link 
