@@ -1,6 +1,6 @@
-# GCCBA Placement Management Portal 🚀
+# Campus Placement Management Portal 🚀
 
-A modern, high-performance career and placement management system designed for **Government Chandigarh College of Business Administration (GCCBA)**. This platform streamlines the recruitment workflow for students, companies, and administrators, featuring AI-powered optimizations and a premium user experience.
+A modern, high-performance career and placement management system designed for **Campus Placement**. This platform streamlines the recruitment workflow for students, companies, and administrators, featuring AI-powered optimizations and a premium user experience.
 
 ---
 
@@ -100,4 +100,4 @@ The current version of the portal has been optimized for speed and modern browsi
 ---
 
 ## 📄 License
-Designed and Developed for GCCBA. All rights reserved.
+Designed and Developed (College Name). All rights reserved.
