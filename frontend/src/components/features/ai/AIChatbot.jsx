@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import API from '../../../services/api';
 
 const AIChatbot = () => {
@@ -11,10 +12,23 @@ const AIChatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   
+  const location = useLocation();
+  const role = localStorage.getItem('role');
+
   // Auto-scroll to latest message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isOpen]);
+
+  // Hide chatbot on admin and company routes, or for admin/company users entirely
+  if (
+    location.pathname.startsWith('/admin') || 
+    location.pathname.startsWith('/company') ||
+    role === 'admin' ||
+    role === 'company'
+  ) {
+    return null;
+  }
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -137,3 +151,4 @@ const AIChatbot = () => {
 };
 
 export default AIChatbot;
+
