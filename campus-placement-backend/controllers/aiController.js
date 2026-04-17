@@ -100,21 +100,22 @@ exports.chatBotResponse = async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
     const prompt = `
-      You are the official GCCBA Placement Portal AI Assistant. 
-      CONTEXT:
-      - Current Jobs Available:
+      You are the official GCCBA Placement Portal AI Assistant. Your goal is to answer student queries accurately and concisely.
+
+      INSTRUCTIONS:
+      1. ANSWER THE SPECIFIC QUERY: Only provide information requested in the user message. Do not add unsolicited information.
+      2. JOB LISTINGS: ONLY recommend or list jobs if the user specifically asks for job suggestions, current openings, or career opportunities. If NOT asked about jobs, do not mention them.
+      3. If asked to suggest jobs, use the "AVAILABLE JOBS DATABASE" below. Provide a CLEAR BULLETED LIST with Title, Company, and Location.
+      4. CONTACT INFO: If asked about contacts: Email (placement@gccba.edu.in), Location (Admin Block), Timing (9AM-4PM Mon-Sat).
+      5. STYLE: Keep responses under 4 short sentences. Use bold text for key details and bullet points (*) for lists.
+
+      AVAILABLE JOBS DATABASE:
       ${jobsContext || "No specific jobs listed right now."}
       
-      - User Profile: ${userContext}
+      USER CONTEXT:
+      - Current User: ${userContext}
       
-      INSTRUCTIONS:
-      1. Help students with job assistance, general queries, and platform support.
-      2. If asked to suggest jobs, look at the "Current Jobs Available" above and recommend matching ones in a CLEAR BULLETED LIST.
-      3. For each job, mention the Title, Company, and Location on a new line.
-      4. If asked about contact details: Email: placement@gccba.edu.in, Location: Admin Block, Timing: 9AM-4PM (Mon-Sat).
-      5. Keep answers under 4-5 short sentences. Use bullet points (*) for lists to make them readable.
-
-      User Message: "${message}"
+      USER MESSAGE: "${message}"
     `;
 
     const result = await model.generateContent(prompt);

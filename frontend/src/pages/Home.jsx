@@ -10,6 +10,8 @@ const Home = () => {
   const userRole = localStorage.getItem("role");
   const [search, setSearch] = useState("");
   const [jobs, setJobs] = useState([]);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -24,6 +26,24 @@ const Home = () => {
     };
     if (isLoggedIn) fetchJobs();
   }, [isLoggedIn]);
+
+  const handleSubscribe = async () => {
+    if (!newsletterEmail || !newsletterEmail.includes("@")) {
+      alert("Please enter a valid university email!");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const response = await API.post("/newsletter/subscribe", { email: newsletterEmail });
+      alert(response.data.message || "Subscribed successfully!");
+      setNewsletterEmail("");
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to subscribe. Please try again later.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="bg-surface text-on-surface min-h-screen flex flex-col">
@@ -97,7 +117,6 @@ const Home = () => {
                   )}
                 </p>
 
-                {/* Search Bar (Hero Component) */}
                 <div className="bg-surface-container-lowest rounded-2xl md:rounded-xl sunken-shadow p-2 flex flex-col md:flex-row items-center gap-2 max-w-4xl mx-auto">
                   <div className="flex-1 flex items-center px-4 py-3 w-full">
                     <span className="material-symbols-outlined text-outline mr-3">work</span>
@@ -134,7 +153,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Stats Section */}
         {userRole !== 'admin' && userRole !== 'company' && (
           <section className="max-w-6xl mx-auto -mt-16 relative z-20 px-6 grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-6 duration-700">
             <div className="bg-surface-container-lowest p-8 rounded-xl sunken-shadow border-t-4 border-primary">
@@ -167,53 +185,45 @@ const Home = () => {
           </section>
         )}
 
-        {/* Hiring Partners Carousel */}
         {userRole !== 'company' && (
           <section className="py-24 overflow-hidden relative">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight mb-3">Top Companies Hiring Now</h2>
-            <p className="text-on-surface-variant font-medium text-lg">Join thousands of GCCBA alumni at premier institutions</p>
-          </div>
-
-          <div className="relative w-full flex items-center overflow-hidden max-w-screen-2xl mx-auto before:content-[''] before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[150px] before:bg-gradient-to-r before:from-surface before:to-transparent after:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-[150px] after:bg-gradient-to-l after:from-surface after:to-transparent">
-            {/* The animated flex container */}
-            <div className="animate-marquee gap-12 md:gap-24 w-max px-6">
-
-              {/* Set 1 */}
-              <div className="flex shrink-0 items-center gap-14 md:gap-32">
-                <img alt="Infosys" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/Infosys.png" />
-                <img alt="HDFC" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/hdfc.png" />
-                <img alt="ICICI" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/icici.png" />
-                <img alt="ITC" className="h-24 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/itc.png" />
-                <img alt="Meta" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/meta.png" />
-                <img alt="Netflix" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/netflix-svgrepo-com.svg" />
-                <img alt="SBI" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/sbi.png" />
-                <img alt="Aditya Birla" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/adtiya_birla_group.png" />
-                <img alt="Tech Mahindra" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/tech_mahindra.png" />
-                <img alt="AU BANK" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/au_bank.png" />
-                <img alt="Wipro" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/wipro.png" />
-              </div>
-
-              {/* Duplicate Set*/}
-              <div className="flex shrink-0 items-center gap-14 md:gap-32">
-                <img alt="Infosys" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/Infosys.png" />
-                <img alt="HDFC" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/hdfc.png" />
-                <img alt="ICICI" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/icici.png" />
-                <img alt="ITC" className="h-24 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/itc.png" />
-                <img alt="Meta" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/meta.png" />
-                <img alt="Netflix" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/netflix-svgrepo-com.svg" />
-                <img alt="SBI" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/sbi.png" />
-                <img alt="Aditya Birla" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/adtiya_birla_group.png" />
-                <img alt="Tech Mahindra" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/tech_mahindra.png" />
-                <img alt="AU BANK" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/au_bank.png" />
-                <img alt="Wipro" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/wipro.png" />
-              </div>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight mb-3">Top Companies Hiring Now</h2>
+              <p className="text-on-surface-variant font-medium text-lg">Join thousands of GCCBA alumni at premier institutions</p>
             </div>
+            <div className="relative w-full flex items-center overflow-hidden max-w-screen-2xl mx-auto before:content-[''] before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[150px] before:bg-gradient-to-r before:from-surface before:to-transparent after:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-[150px] after:bg-gradient-to-l after:from-surface after:to-transparent">
+              <div className="animate-marquee gap-12 md:gap-24 w-max px-6">
+                <div className="flex shrink-0 items-center gap-14 md:gap-32">
+                  <img alt="Infosys" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/Infosys.png" />
+                  <img alt="HDFC" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/hdfc.png" />
+                  <img alt="ICICI" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/icici.png" />
+                  <img alt="ITC" className="h-24 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/itc.png" />
+                  <img alt="Meta" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/meta.png" />
+                  <img alt="Netflix" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/netflix-svgrepo-com.svg" />
+                  <img alt="SBI" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/sbi.png" />
+                  <img alt="Aditya Birla" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/adtiya_birla_group.png" />
+                  <img alt="Tech Mahindra" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/tech_mahindra.png" />
+                  <img alt="AU BANK" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/au_bank.png" />
+                  <img alt="Wipro" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/wipro.png" />
+                </div>
+                <div className="flex shrink-0 items-center gap-14 md:gap-32">
+                  <img alt="Infosys" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/Infosys.png" />
+                  <img alt="HDFC" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/hdfc.png" />
+                  <img alt="ICICI" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/icici.png" />
+                  <img alt="ITC" className="h-24 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/itc.png" />
+                  <img alt="Meta" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/meta.png" />
+                  <img alt="Netflix" className="h-16 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/netflix-svgrepo-com.svg" />
+                  <img alt="SBI" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/sbi.png" />
+                  <img alt="Aditya Birla" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/adtiya_birla_group.png" />
+                  <img alt="Tech Mahindra" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/tech_mahindra.png" />
+                  <img alt="AU BANK" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/au_bank.png" />
+                  <img alt="Wipro" className="h-20 w-auto object-contain shrink-0 hover:scale-110 transition-all cursor-pointer drop-shadow-sm" src="/logos/wipro.png" />
+                </div>
+              </div>
             </div>
           </section>
         )}
 
-         {/* Featured Jobs Section (Only visible for students) */}
         {isLoggedIn && userRole === 'student' && jobs.length > 0 && (
           <section className="bg-surface-container-low py-24 px-6 md:min-h-[500px]">
             <div className="max-w-6xl mx-auto">
@@ -229,7 +239,6 @@ const Home = () => {
                   View All Opportunities <span className="material-symbols-outlined">arrow_forward</span>
                 </Link>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {jobs.map(job => (
                   <Link 
@@ -266,13 +275,6 @@ const Home = () => {
                         <span className="mx-2 text-outline-variant">•</span>
                         <span className="material-symbols-outlined text-sm">location_on</span> {job.location || 'Not Specified'}
                       </p>
-                      {job.skillsRequired && job.skillsRequired.length > 0 && (
-                          <div className="flex flex-wrap gap-1 mb-6">
-                              {job.skillsRequired.map((skill, i) => (
-                                  <span key={i} className="text-[10px] font-bold px-2 py-0.5 bg-outline-variant/10 text-on-surface rounded-full">{skill}</span>
-                              ))}
-                          </div>
-                      )}
                     </div>
                     <div className="flex items-center justify-between mt-auto">
                       <span className="text-on-surface font-bold">{job.salary || 'Competitive'}</span>
@@ -285,63 +287,68 @@ const Home = () => {
           </section>
         )}
 
-        {/* Placed Students Section */}
         {userRole !== 'company' && (
           <section className="py-24 px-6 bg-surface">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-extrabold text-on-surface mb-4">Our Star Achievers</h2>
-              <p className="text-on-surface-variant text-lg max-w-2xl mx-auto">Meet some of our brightest students who have successfully secured placements at top global companies through the GCCBA Placement Cell.</p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { name: "Rahul Sharma", company: "Infosys", package: "8.5 LPA", image: "/images/students/student1.png", role: "Software Engineer" },
-                { name: "Priya Singh", company: "HDFC Bank", package: "7.2 LPA", image: "/images/students/student2.png", role: "Management Trainee" },
-                { name: "Amit Patel", company: "ICICI Bank", package: "6.8 LPA", image: "/images/students/student3.png", role: "Relationship Manager" },
-                { name: "Sneha Reddy", company: "ITC Limited", package: "9.0 LPA", image: "/images/students/student4.png", role: "Business Analyst" }
-              ].map((student, index) => (
-                <div key={index} className="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 hover:shadow-xl transition-all duration-300 group">
-                  <div className="aspect-[5/4] overflow-hidden bg-slate-200">
-                    <img 
-                      src={student.image} 
-                      alt={student.name} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                       <span className="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Placed</span>
-                       <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">{student.company}</span>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-extrabold text-on-surface mb-4">Our Star Achievers</h2>
+                <p className="text-on-surface-variant text-lg max-w-2xl mx-auto">Meet some of our brightest students who have successfully secured placements at top global companies through the GCCBA Placement Cell.</p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  { name: "Rahul Sharma", company: "Infosys", package: "8.5 LPA", image: "/images/students/student1.png", role: "Software Engineer" },
+                  { name: "Priya Singh", company: "HDFC Bank", package: "7.2 LPA", image: "/images/students/student2.png", role: "Management Trainee" },
+                  { name: "Amit Patel", company: "ICICI Bank", package: "6.8 LPA", image: "/images/students/student3.png", role: "Relationship Manager" },
+                  { name: "Sneha Reddy", company: "ITC Limited", package: "9.0 LPA", image: "/images/students/student4.png", role: "Business Analyst" }
+                ].map((student, index) => (
+                  <div key={index} className="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 hover:shadow-xl transition-all duration-300 group">
+                    <div className="aspect-[5/4] overflow-hidden bg-slate-200">
+                      <img src={student.image} alt={student.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <h3 className="text-lg font-bold text-on-surface mb-0.5">{student.name}</h3>
-                    <p className="text-sm text-on-surface-variant mb-4">{student.role}</p>
-                    <div className="flex items-center justify-between pt-4 border-t border-outline-variant/20">
-                      <span className="text-xs font-medium text-outline">CTC Offered</span>
-                      <span className="text-primary font-bold">{student.package}</span>
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Placed</span>
+                        <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">{student.company}</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-on-surface mb-0.5">{student.name}</h3>
+                      <p className="text-sm text-on-surface-variant mb-4">{student.role}</p>
+                      <div className="flex items-center justify-between pt-4 border-t border-outline-variant/20">
+                        <span className="text-xs font-medium text-outline">CTC Offered</span>
+                        <span className="text-primary font-bold">{student.package}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
           </section>
         )}
 
-        {/* Newsletter / CTA */}
         {userRole !== 'company' && (
           <section className="py-24 px-6 overflow-hidden relative">
-          <div className="max-w-6xl mx-auto bg-primary rounded-3xl p-12 md:p-20 relative overflow-hidden text-center text-white">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
-            <div className="relative z-10 max-w-2xl mx-auto">
-              <h2 className="text-4xl font-bold mb-6">Stay Ahead of the Curve</h2>
-              <p className="text-blue-100 text-lg mb-10">Get personalized job alerts and career tips delivered to your inbox every week.</p>
-              <div className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
-                <input className="flex-1 rounded-xl px-6 py-4 text-on-surface border border-white/20 bg-white/10 placeholder:text-white/60 focus:outline-none focus:ring-2 ring-white/50 transition-all font-medium" placeholder="Your University Email" type="email" />
-                <button className="bg-white text-primary px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-50 active:scale-95 transition-all outline-none border-none">Subscribe</button>
+            <div className="max-w-6xl mx-auto bg-primary rounded-3xl p-12 md:p-20 relative overflow-hidden text-center text-white">
+              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
+              <div className="relative z-10 max-w-2xl mx-auto">
+                <h2 className="text-4xl font-bold mb-6">Stay Ahead of the Curve</h2>
+                <p className="text-blue-100 text-lg mb-10">Get personalized job alerts and career tips delivered to your inbox every week.</p>
+                <div className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                  <input 
+                    className="flex-1 rounded-xl px-6 py-4 text-on-surface border border-white/20 bg-white/10 placeholder:text-white/60 focus:outline-none focus:ring-2 ring-white/50 transition-all font-medium" 
+                    placeholder="Your University Email" 
+                    type="email" 
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                  />
+                  <button 
+                    onClick={handleSubscribe}
+                    disabled={submitting}
+                    className="bg-white text-primary px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-50 active:scale-95 transition-all outline-none border-none disabled:opacity-70"
+                  >
+                    {submitting ? "Subscribing..." : "Subscribe"}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           </section>
         )}
       </main>

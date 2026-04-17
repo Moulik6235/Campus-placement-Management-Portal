@@ -31,6 +31,7 @@ app.use("/api/applications", require("./routes/applicationRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/ai", require("./routes/aiRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/newsletter", require("./routes/newsletterRoutes"));
 
 // Test route
 app.get("/", (req, res) => {
