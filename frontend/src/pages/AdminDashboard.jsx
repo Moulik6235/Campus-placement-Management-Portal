@@ -650,7 +650,7 @@ const AdminDashboard = () => {
                       </td>
                       <td className="px-6 py-4">
                         {app.resume ? (
-                          <a href={`http://localhost:5000/${app.resume.replace(/\\/g, "/")}`} target="_blank" rel="noreferrer" className="text-primary hover:underline text-xs font-bold flex items-center gap-1">
+                          <a href={`${API.defaults.baseURL.replace('/api', '')}/${app.resume.replace(/\\/g, "/")}`} target="_blank" rel="noreferrer" className="text-primary hover:underline text-xs font-bold flex items-center gap-1">
                             <span className="material-symbols-outlined text-[16px]">description</span>
                             View PDF
                           </a>

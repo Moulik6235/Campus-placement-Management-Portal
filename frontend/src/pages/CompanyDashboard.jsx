@@ -280,7 +280,7 @@ const CompanyDashboard = () => {
                                         </td>
                                         <td className="px-6 py-5">
                                             <a 
-                                                href={`http://localhost:5000/${app.resume?.replace(/\\/g, "/")}`} 
+                                                href={`${API.defaults.baseURL.replace('/api', '')}/${app.resume?.replace(/\\/g, "/")}`} 
                                                 target="_blank" 
                                                 rel="noopener noreferrer"
                                                 className="text-primary hover:underline flex items-center gap-1.5 text-sm font-bold"
