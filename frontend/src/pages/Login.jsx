@@ -20,8 +20,6 @@ export default function Login() {
     try {
       const res = await API.post("/auth/login", { email, password });
 
-      // remove admin token (important)
-      localStorage.removeItem("adminToken");
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("name", res.data.name);

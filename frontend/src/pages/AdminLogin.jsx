@@ -29,8 +29,9 @@ const AdminLogin = () => {
       const res = await API.post("/admin/login", form);
 
       // SAVE REAL JWT TOKEN
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.role);
+      localStorage.setItem("adminToken", res.data.token);
+      localStorage.setItem("adminRole", res.data.role);
+      localStorage.setItem("adminName", "Admin");
 
       navigate("/admin/dashboard");
     } catch (err) {

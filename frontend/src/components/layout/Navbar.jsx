@@ -4,9 +4,22 @@ import { useState, useEffect, useRef } from "react";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isLoggedIn = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
-  const userName = localStorage.getItem("name");
+  const isAdminPath = location.pathname.startsWith('/admin');
+
+  const adminToken = localStorage.getItem("adminToken");
+  const adminRole = localStorage.getItem("adminRole");
+  const adminName = localStorage.getItem("adminName");
+
+  const userToken = localStorage.getItem("token");
+  const userRole = localStorage.getItem("role");
+  const userNameVal = localStorage.getItem("name");
+
+  // Dynamically select the active session based on the page context
+  const activeToken = isAdminPath ? (adminToken || userToken) : (userToken || adminToken);
+  const role = isAdminPath ? (adminRole || userRole) : (userRole || adminRole);
+  const userName = isAdminPath ? (adminName || userNameVal) : (userNameVal || adminName);
+
+  const isLoggedIn = activeToken;
   const initial = userName ? userName[0].toUpperCase() : (role === "admin" ? "A" : "S");
   const [open, setOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,12 +36,30 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    localStorage.removeItem("name");
-    navigate("/");
-    window.location.reload();
+  const handleLogout = (e) => {
+    // Log out from the currently active session context
+    if (isAdminPath && adminToken) {
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("adminRole");
+      localStorage.removeItem("adminName");
+    } else {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("name");
+    }
+    
+    if (e.ctrlKey || e.metaKey) {
+      setOpen(false);
+      // Delay reload to allow the browser to open the new tab natively via the <Link> component
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    } else {
+      e.preventDefault();
+      setOpen(false);
+      navigate(isAdminPath ? "/admin" : "/");
+      window.location.reload();
+    }
   };
 
   const isActive = (path) => {

@@ -24,8 +24,8 @@ export default ProtectedRoute;
 
 // ✅ ADMIN ROUTE
 export const AdminRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
+  const token = localStorage.getItem("adminToken");
+  const role = localStorage.getItem("adminRole");
 
   if (!token || role !== "admin") {
     return <Navigate to="/admin" />;

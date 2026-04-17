@@ -188,9 +188,18 @@ const AdminDashboard = () => {
   };
 
   // ================= LOGOUT =================
-  const logout = () => {
-    localStorage.clear();
-    window.location.href = "/admin";
+  const logout = (e) => {
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminRole");
+    localStorage.removeItem("adminName");
+    if (e.ctrlKey || e.metaKey) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    } else {
+      e.preventDefault();
+      window.location.href = "/admin";
+    }
   };
 
   if (loading) {
