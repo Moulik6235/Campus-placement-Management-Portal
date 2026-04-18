@@ -22,7 +22,6 @@ const sendEmail = async (to, subject, html) => {
   }
 };
 
-// --- Templates ---
 
 const registrationTemplate = (name) => `
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">

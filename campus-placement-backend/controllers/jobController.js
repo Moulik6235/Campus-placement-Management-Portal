@@ -33,7 +33,7 @@ exports.createJob = async (req, res) => {
     // Notify all approved students
     const approvedStudents = await User.find({ role: "student", status: "approved" });
     
-    // Using Promise.all to send emails concurrently
+  
     if (approvedStudents.length > 0) {
       const emailPromises = approvedStudents.map(student => 
         sendEmail(
@@ -87,7 +87,7 @@ exports.updateJob = async (req, res) => {
   try {
     const data = { ...req.body };
 
-    // Handle skills string to array conversion
+  
     if (data.skillsRequired && typeof data.skillsRequired === 'string') {
         data.skillsRequired = data.skillsRequired.split(',').map(s => s.trim()).filter(s => s);
     }

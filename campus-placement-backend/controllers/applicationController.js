@@ -24,7 +24,7 @@ exports.applyJob = async (req, res) => {
     }
 
     const application = await Application.create({
-      user: req.user._id, // ✅ VERY IMPORTANT
+      user: req.user._id,
       job: jobId,
       resume: req.file ? req.file.path.replace(/\\/g, "/") : "",
     });
@@ -49,11 +49,11 @@ exports.applyJob = async (req, res) => {
   }
 };
 
-// GET MY APPLICATIONS
+// GET APPLICATIONS
 exports.getMyApplications = async (req, res) => {
   try {
     const apps = await Application.find({
-      user: req.user._id, // ✅ FILTER
+      user: req.user._id,
     }).populate("job");
 
     res.json(apps);
@@ -114,11 +114,11 @@ exports.updateStatus = async (req, res) => {
 // COMPANY: GET APPLICATIONS FOR MY JOBS
 exports.getCompanyApplications = async (req, res) => {
     try {
-      // 1. Find all jobs posted by this company
+     
       const myJobs = await Job.find({ postedBy: req.user._id });
       const myJobIds = myJobs.map(job => job._id);
   
-      // 2. Find applications for those jobs
+     
       const apps = await Application.find({
         job: { $in: myJobIds }
       })

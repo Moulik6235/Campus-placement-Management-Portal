@@ -8,8 +8,7 @@ exports.subscribeNewsletter = async (req, res) => {
       return res.status(400).json({ message: "Please provide an email" });
     }
 
-    // You could also save the email to a Subscriber model here if needed.
-    // For now, we'll just send the confirmation email as requested.
+ 
 
     const message = `
       Hello!
@@ -45,7 +44,6 @@ exports.subscribeNewsletter = async (req, res) => {
       res.status(200).json({ message: "Subscription successful! Check your email for confirmation." });
     } catch (mailErr) {
       console.error("Mail Send Error:", mailErr);
-      // Even if mail fails, we might want to return 200 if we saved it, but here since mail IS the feature:
       res.status(500).json({ message: "Could not send confirmation email. Please check your SMTP settings." });
     }
   } catch (err) {

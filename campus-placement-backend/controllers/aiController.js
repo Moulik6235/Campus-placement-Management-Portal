@@ -61,7 +61,7 @@ exports.analyzeJobMatch = async (req, res) => {
   } catch (err) {
     console.error("AI Match Error:", err);
     
-    // Fallback Mock Response so UI doesn't crash from API limits
+
     res.status(200).json({ 
       score: 75,
       matchedSkills: user && user.skills ? user.skills : [],
@@ -80,14 +80,11 @@ exports.chatBotResponse = async (req, res) => {
       return res.status(500).json({ message: "Chatbot logic is offline: Missing API Key." });
     }
 
-    // Fetch jobs context
+    // Fetch jobs
     const jobs = await Job.find({}).limit(10);
     const jobsContext = jobs.map(j => `- ${j.title} at ${j.company} in ${j.location}`).join('\n');
 
-    // Fetch user context if token exists (even if route is unprotected, we can try to extract user)
-    // For now, let's assume we want to support both. 
-    // If the route doesn't have protect, req.user won't be there.
-    // I will use req.user if available (e.g. if we add protect back or use a custom check)
+
     let userContext = "Guest User";
     if (req.user) {
       const user = await User.findById(req.user._id);
