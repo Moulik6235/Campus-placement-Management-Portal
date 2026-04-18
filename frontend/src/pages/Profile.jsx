@@ -29,7 +29,7 @@ export default function Profile() {
     projects: [{ title: "", link: "", description: "" }],
   });
 
-  // ================= PROFILE SAVE =================
+  //PROFILE SAVE
   const saveProfile = async () => {
     try {
       await API.put("/users/profile", {
@@ -46,7 +46,7 @@ export default function Profile() {
     }
   };
 
-  // ================= AUTO FILL =================
+  // AUTO FILL
   const autoFill = async () => {
     try {
       const res = await API.get("/users/profile");
@@ -72,7 +72,7 @@ export default function Profile() {
     }
   };
 
-  // ================= INPUT =================
+  //INPUT
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -107,7 +107,7 @@ export default function Profile() {
     setPhoto(e.target.files[0]);
   };
 
-  // ================= PDF =================
+  // PDF
   const generatePDF = () => {
     const doc = new jsPDF();
 
@@ -188,7 +188,7 @@ export default function Profile() {
     }
   };
 
-  // ================= UI =================
+  // Ui
   return (
     <div className="bg-surface text-on-surface min-h-screen font-body flex flex-col">
       <Navbar />

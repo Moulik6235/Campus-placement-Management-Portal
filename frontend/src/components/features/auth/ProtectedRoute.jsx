@@ -22,7 +22,7 @@ export const CompanyRoute = ({ children }) => {
 
 export default ProtectedRoute;
 
-// ✅ ADMIN ROUTE
+//ADMIN ROUTE
 export const AdminRoute = ({ children }) => {
   const token = localStorage.getItem("adminToken");
   const role = localStorage.getItem("adminRole");

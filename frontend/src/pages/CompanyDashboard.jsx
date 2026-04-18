@@ -55,7 +55,7 @@ const CompanyDashboard = () => {
     return (
       <div className="min-h-screen bg-surface flex flex-col">
         <Navbar />
-        <div className="flex-grow flex items-center justify-center">
+        <div className="grow flex items-center justify-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
         </div>
       </div>
@@ -84,7 +84,7 @@ const CompanyDashboard = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-outline-variant/30 mb-8 sticky top-[64px] bg-surface z-10 py-1 overflow-x-auto no-scrollbar">
+        <div className="flex border-b border-outline-variant/30 mb-8 sticky top-16 bg-surface z-10 py-1 overflow-x-auto no-scrollbar">
           {[
             { id: "overview", label: "Overview", icon: "dashboard" },
             { id: "jobs", label: "My Jobs", icon: "work" },
@@ -220,7 +220,7 @@ const CompanyDashboard = () => {
                         <button 
                             onClick={() => {
                                 setActiveTab("applications");
-                                // Here we could filter applications by this job ID if we wanted
+                               
                             }}
                             className="text-sm font-bold text-primary hover:underline flex items-center gap-1"
                         >

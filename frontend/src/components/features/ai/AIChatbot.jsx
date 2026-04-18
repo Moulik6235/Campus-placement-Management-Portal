@@ -15,12 +15,12 @@ const AIChatbot = () => {
   const location = useLocation();
   const role = localStorage.getItem('role');
 
-  // Auto-scroll to latest message
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isOpen]);
 
-  // Hide chatbot on admin and company routes, or for admin/company users entirely
+  // Hide chatbot
   if (
     location.pathname.startsWith('/admin') || 
     location.pathname.startsWith('/company') ||

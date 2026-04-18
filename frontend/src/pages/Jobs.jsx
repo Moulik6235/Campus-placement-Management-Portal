@@ -25,7 +25,7 @@ const Jobs = () => {
       const res = await API.get(endpoint);
       setJobs(res.data);
     } catch (err) {
-      // Fallback data if needed during dev
+      
       setJobs([
         { _id: '1', title: 'Associate Financial Analyst', company: 'Google India', location: 'Bengaluru', salary: '₹4.5 - 6.0 LPA', type: 'Full Time', posted: '2 days ago', logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBmGy7PJunpjnrPjJWJo-xxJRoqZ5qAh6j4bolfhvmyyFuPiDrZwDufVDPTuKrIhfc2jDw5tv_OEdmhCvOf7EBbyiF5FbMgvjpCgcdxszFUFDCA45jjWMg8mpbMW917nnj4004VKLDOQUK6pMmJBcNBkZH341i7YkZcJaOXNU_s5Qdzw0tWZQH-yDbmuGJqSiJzAFuyK-w-flqpd5SiYZU4xbzV_jyS0WwqyeOlJGkULM6L7jSpRgpZaCXioYnyjovzPym09BwrPupJ'},
         { _id: '2', title: 'Business Development', company: 'Stripe Finance', location: 'Remote', salary: '₹3.0 - 5.5 LPA', type: 'Fresher', posted: 'Just now', logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZoVxFjS4KeT8imdYW1a03MRy46QXAIV7d9nRHmtkUY_AODIZV-OtXJhm5lQ7ek9f-Gdx8q-1gO5kltlLA3wh8K2d2rOZ2RaaDb4URffAAjE7q5h5MezucvF4EXe0oh9SKix3WxJj_RgP32lBIhwEYLleEN84NaA0GaPUVV3LfJaxx_nrrUqyMBHffkaV5NaPqwM5d8NPIeh1KHY7SePLQF0VsdyLDuyvpmJDL1WPeD-ZWzjBKn83BE02EeF6kPheZqmdmnNF2aPXQ'}

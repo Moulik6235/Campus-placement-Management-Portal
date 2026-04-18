@@ -21,7 +21,7 @@ const Home = () => {
         const res = await API.get(endpoint);
         setJobs(res.data.slice(0, 4));
       } catch (err) {
-        // Silently handle error for production feel
+        
       }
     };
     if (isLoggedIn) fetchJobs();

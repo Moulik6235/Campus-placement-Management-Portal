@@ -45,7 +45,7 @@ const Register = () => {
     try {
       await API.post("/auth/register", form);
       setSuccess(true);
-      // Success modal will show, then user can click to go home
+
     } catch (err) {
       setError(err.response?.data?.message || "Error registering");
     } finally {
@@ -60,7 +60,7 @@ const Register = () => {
       <main className="flex-grow flex items-center justify-center p-6 animate-in fade-in zoom-in-95 duration-500 py-12">
         <div className="w-full max-w-lg bg-surface-container-lowest rounded-3xl p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-outline-variant/20 relative overflow-hidden group">
           
-          {/* Decorative glow */}
+        
           <div className="absolute -top-24 -left-24 w-64 h-64 bg-secondary/5 rounded-full blur-3xl pointer-events-none group-hover:bg-secondary/10 transition-all duration-700"></div>
 
           <div className="text-center mb-8 relative">

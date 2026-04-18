@@ -40,7 +40,7 @@ export default function Login() {
       <main className="flex-grow flex items-center justify-center p-6 animate-in fade-in zoom-in-95 duration-500">
         <div className="w-full max-w-md bg-surface-container-lowest rounded-3xl p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-outline-variant/20 relative overflow-hidden group">
           
-          {/* Decorative glow */}
+        
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/20 transition-all duration-700"></div>
 
           <div className="text-center mb-8 relative">

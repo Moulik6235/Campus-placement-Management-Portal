@@ -60,7 +60,7 @@ const AdminDashboard = () => {
     load();
   }, []);
 
-  // ================= JOB =================
+  // JOB
   const handleSubmit = async () => {
     // Basic validation for all fields
     if (!form.title || !form.company || !form.location || !form.description || !form.salary || !form.experienceRequired || !form.jobType || !form.skillsRequired) {
@@ -98,7 +98,7 @@ const AdminDashboard = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // ================= STUDENT =================
+  //STUDENT
   const approve = async (id) => {
     await API.put(`/admin/approve/${id}`);
     fetchData();
@@ -109,13 +109,13 @@ const AdminDashboard = () => {
     fetchData();
   };
 
-  // ================= APPLICATION =================
+  //  APPLICATION
   const updateStatus = async (id, status) => {
     await API.put(`/applications/${id}`, { status });
     fetchData();
   };
 
-  // ================= EXPORT PDF REPORT =================
+  // EXPORT PDF REPORT
   const generateReport = () => {
     const doc = new jsPDF();
     const date = new Date().toLocaleDateString();
@@ -187,7 +187,7 @@ const AdminDashboard = () => {
     doc.save(`GCCBA_Placement_Report_${date.replace(/\//g, '-')}.pdf`);
   };
 
-  // ================= LOGOUT =================
+  //LOGOUT 
   const logout = (e) => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("adminRole");
@@ -269,7 +269,7 @@ const AdminDashboard = () => {
         </div>
       </aside>
 
-      {/* OVERLAY FOR MOBILE */}
+      {/*FOR MOBILE */}
       {mobileOpen && (
         <div 
           onClick={() => setMobileOpen(false)}
@@ -277,8 +277,8 @@ const AdminDashboard = () => {
         ></div>
       )}
 
-      {/* Main Canvas */}
-      <main className="flex-1 min-h-screen p-6 lg:p-8 bg-surface-container-low/30 mt-[72px] lg:mt-0 transition-all">
+      {/* Main*/}
+      <main className="flex-1 min-h-screen p-6 lg:p-8 bg-surface-container-low/30 mt-18 lg:mt-0 transition-all">
         
         {/* HEADER */}
         <header className="flex justify-between items-end mb-10">

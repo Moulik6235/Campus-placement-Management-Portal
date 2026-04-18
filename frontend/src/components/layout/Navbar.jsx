@@ -14,7 +14,7 @@ const Navbar = () => {
   const userRole = localStorage.getItem("role");
   const userNameVal = localStorage.getItem("name");
 
-  // Dynamically select the active session based on the page context
+
   const activeToken = isAdminPath ? (adminToken || userToken) : (userToken || adminToken);
   const role = isAdminPath ? (adminRole || userRole) : (userRole || adminRole);
   const userName = isAdminPath ? (adminName || userNameVal) : (userNameVal || adminName);
@@ -25,7 +25,7 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Close dropdown when clicking outside
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -37,7 +37,7 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = (e) => {
-    // Log out from the currently active session context
+  
     if (isAdminPath && adminToken) {
       localStorage.removeItem("adminToken");
       localStorage.removeItem("adminRole");
@@ -50,15 +50,14 @@ const Navbar = () => {
     
     if (e.ctrlKey || e.metaKey) {
       setOpen(false);
-      // Delay reload to allow the browser to open the new tab natively via the <Link> component
+    
       setTimeout(() => {
         window.location.reload();
       }, 100);
     } else {
       e.preventDefault();
       setOpen(false);
-      navigate(isAdminPath ? "/admin" : "/");
-      window.location.reload();
+      window.location.href = isAdminPath ? "/admin" : "/";
     }
   };
 
@@ -276,6 +275,13 @@ const Navbar = () => {
                   className="text-lg font-bold flex items-center gap-3 text-on-surface"
                 >
                   <span className="material-symbols-outlined">dashboard</span> Dashboard
+                </Link>
+                <Link
+                  to="/"
+                  onClick={handleLogout}
+                  className="text-lg font-bold flex items-center gap-3 text-error mt-4 pt-4 border-t border-outline-variant/10"
+                >
+                  <span className="material-symbols-outlined">logout</span> Log out
                 </Link>
               </>
             ) : (

@@ -18,7 +18,7 @@ export default function JobDetails() {
       const res = await API.post("/ai/match-score", { jobId: id });
       setAiResult(res.data);
     } catch (err) {
-      // Error handled silently for production flow
+    
       alert("Error calculating match score. Please try again.");
     } finally {
       setAiLoading(false);
@@ -37,7 +37,7 @@ export default function JobDetails() {
         const applied = res.data.some(app => (app.job?._id || app.job) === id);
         setHasApplied(applied);
       } catch (err) {
-        // Silently handle error
+      
       }
     }
   };
@@ -49,7 +49,7 @@ export default function JobDetails() {
       if (found) {
         setJob(found);
       } else {
-        // Dummy data fallback
+        // Dummy data
         setJob({
           _id: id,
           title: 'Senior Product Designer',
@@ -194,7 +194,7 @@ export default function JobDetails() {
           </section>
         </div>
 
-        {/* Sidebar: Sticky Application Form */}
+        {/* Sidebar*/}
         <aside className="lg:col-span-4 animate-in fade-in slide-in-from-right-4 duration-500 delay-150">
           <div className="sticky top-24 space-y-6">
             <div className="bg-surface-container-lowest rounded-2xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-outline-variant/15">

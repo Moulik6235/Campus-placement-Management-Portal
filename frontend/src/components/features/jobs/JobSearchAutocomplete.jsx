@@ -17,7 +17,7 @@ export default function JobSearchAutocomplete({ placeholder = "Search by job tit
         const res = await API.get("/jobs");
         setJobs(res.data);
       } catch (err) {
-        // Fallback for visual demonstration if DB fails
+    
         setJobs([
           { _id: '1', title: 'Associate Financial Analyst', company: 'Google India' },
           { _id: '2', title: 'Business Development', company: 'Stripe Finance' }
@@ -28,7 +28,7 @@ export default function JobSearchAutocomplete({ placeholder = "Search by job tit
     fetchAllJobs();
   }, []);
 
-  // Handle outside clicks to close dropdown
+  
   useEffect(() => {
     function handleClickOutside(event) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -39,12 +39,11 @@ export default function JobSearchAutocomplete({ placeholder = "Search by job tit
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Filter jobs dynamically when user types
+
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
     
-    // Pass up to parent if they want to do static filtering (like Jobs.jsx)
     if (onSearchChange) {
       onSearchChange(value);
     }
@@ -70,12 +69,12 @@ export default function JobSearchAutocomplete({ placeholder = "Search by job tit
 
   const handleEnterPress = (e) => {
     if (e.key === "Enter" && suggestions.length > 0) {
-      // Navigate to top suggestion on enter
+    
       handleSuggestionClick(suggestions[0]._id || suggestions[0].id);
     } else if (e.key === "Enter") {
-       // If no exact match but user hits enter, maybe trigger parent search action
+       
        if (onSearchChange) {
-           navigate('/jobs'); // fallback route to standard search list
+           navigate('/jobs'); 
        }
     }
   };

@@ -56,7 +56,7 @@ export default function Dashboard() {
         projects: res.data.projects || [],
       });
     } catch(err) {
-      // Error handled silently
+      // Error handling
     }
   };
 
@@ -209,7 +209,7 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Application Status Widget */}
+            {/* Application Status */}
             <div className="bg-surface-container-low p-6 rounded-xl overflow-hidden relative">
               <div className="absolute top-0 right-0 w-24 h-24 bg-pink-500/5 rounded-full -mr-12 -mt-12"></div>
               <h3 className="font-headline font-bold text-on-surface mb-4">Live Track</h3>

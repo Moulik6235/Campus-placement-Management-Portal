@@ -5,7 +5,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
 const PostJob = () => {
-  const { id } = useParams(); // For Edit Mode
+  const { id } = useParams(); 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(false);
@@ -29,7 +29,7 @@ const PostJob = () => {
   const fetchJobDetails = async () => {
     try {
       setFetching(true);
-      const res = await API.get("/jobs"); // We fetch all then find or we can add a get single job route
+      const res = await API.get("/jobs");
       const job = res.data.find(j => j._id === id);
       if (job) {
         setForm({
@@ -92,7 +92,7 @@ const PostJob = () => {
         
         <div className="bg-surface-container-lowest rounded-[32px] p-8 sm:p-12 shadow-xl border border-outline-variant/20 relative overflow-hidden group">
           
-          {/* Decorative glow */}
+          
           <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/10 transition-all duration-700"></div>
 
           <div className="text-center mb-10 relative">

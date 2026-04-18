@@ -32,7 +32,7 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/help" element={<Help />} />
 
-        {/* IMPORTANT: Match Navbar path */}
+        
         <Route path="/admin" element={<AdminLogin />} />
 
         <Route path="/job/:id" element={<JobDetails />} />
